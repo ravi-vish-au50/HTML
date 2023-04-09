@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: 1px solid red;
+      }
+      body{
+        background-color: #4d4d4d;
+      }
+      #container {
+        height: 930px;
+        z-index: -1;
+        width: 590px;
+        background: #191919;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        bottom: 0;
+        animation: alternate 2.7s linear infinite;
+        right: 0;
+        box-shadow: 29px 29px 20px #666666;
+      }
+      #container::before {
+        content:'';
+        height: 1800px;
+        width: 1500px;
+        background: conic-gradient(
+          crimson,
+          transparent 25%,
+          yellow 30%, pink 70%
+        );
+        margin-left: -550px;
+        margin-top: -500px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        animation: animate 2.7s linear infinite;
+        right: 0;
+      }
+      #container::after {
+        content: "By @Ravi Navshikhiya";
+        height: 0px;
+        color: white;
+        padding-top: 630px;
+        padding-left: 90px;
+        box-shadow: inset 33px 33px 40px black;
+        width: 486px;
+        margin-left: 6px;
+        margin-top: 10px;
+        /* border: 2px solid white; */
+        background-color: #191919;
+        position: absolute;
+      }
+      @keyframes animate {
+        0% {
+          transform: rotate(-0deg);
+        }
+        100% {
+          transform: rotate(-360deg);
+        }
+      }
+      #Hours,
+      #Minutes,
+      #Seconds,
+      #dot {
+        font-size: 128px;
+        font-weight: bolder;
+        color: white;
+        text-shadow: 2px 2px 2px white;
+        display: inline-block;
+        padding-left: 40px;
+        margin-top: 530px;
+        z-index: 10;
+      }
+      #Hours {
+        margin-left: 210px;
+        margin-top: 150px;
+      }
+      #Seconds {
+        display: block;
+        margin-top: 40px;
+        font-size: 190px;
+        margin-left: 330px;
+      }
+    </style>
+    <title>Time treval</title>
+  </head>
+  <body>
+    <div id="content">
+      <div id="Hours">00</div>
+      <div id="dot">:</div>
+      <div id="Minutes">00</div>
+      <div id="Seconds">
+        <span>00</span>
+      </div>
+    </div>
+    <div id="container"></div>
+    <script>
+      function clock() {
+        var hours = document.getElementById('Hours');
+        var minutes = document.getElementById('Minutes');
+        var seconds = document.getElementById('Seconds');
+        let h = new Date().getHours();
+        let m = new Date().getMinutes();
+        let s = new Date().getSeconds();
+        hours.innerHTML = h;
+        minutes.innerHTML = m;
+        seconds.innerHTML = s;
+      }
+      setInterval(clock, 1000);
+    </script>
+  </body>
+</html>
